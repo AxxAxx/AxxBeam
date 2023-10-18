@@ -25,11 +25,11 @@ The main menu will once again be presented.
 To exit the menu, long press the button.  
 The blue indication light will flash 10 times rapidly and the lamp will exit programming mode and boot up as normal.  
 
-Eg. To change the power source to 12V lead acid battery:  
+__EXAMPLE: To change power modes to [5%, 100%]__  
 	- Hold button while plugging in the lamp to a power source  
 	- The blue indicator light flashes 10 times rapidly (button can be released now)  
-	- 1 BLINK --- 2 BLINK ---(short button press) --- (2 BLINK with the main LEDs as confirmation for entering sub-menu 2) ---  
-	- 1 BLINK --- 2 BLINK --- 3 BLINK ---(short button press)--- (3 BLINK with the main LEDs as confirmation for choosing setting 3) ---  
+	- 1 BLINK ---(short button press) --- (1 BLINK with the main LEDs as confirmation for entering sub-menu 1) 
+	- 1 BLINK --- 2 BLINK --- 3 BLINK ---(short button press)--- (3 BLINK with the main LEDs as confirmation for choosing setting 3)
 	- 1 BLINK --- (long button press) --- The blue indicator light flashes 10 times rapidly and the programming interface is exited.  
 
 - Top level menu  
