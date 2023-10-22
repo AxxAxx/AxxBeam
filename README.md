@@ -1,3 +1,4 @@
+![coverphoto](./photos/AxxBeam_alpha.jpg)
 __+-----------------------------------+|   AxxBeam Specifications          |+-----------------------------------+__  
 __Weight:__ 240 g  
 __Input voltage:__ 7-20 V  
