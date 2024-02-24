@@ -1,4 +1,5 @@
 ![coverphoto](./images/AxxBeam_alpha.jpg)
+![FE350](./images/AxxBeam_on_FE350.jpg)
 __+-----------------------------------+|   AxxBeam Specifications          |+-----------------------------------+__  
 __Weight:__ 240 g  
 __Input voltage:__ 7-20 V  
