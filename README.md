@@ -71,3 +71,5 @@ __EXAMPLE: To change power modes to [5%, 100%]__
 	- 2 BLINK: Reset all parameters to Default?  NO  
 
 - 7 BLINK (Version info)  
+
+![PCB](./images/AxxBeam_V3_PCB_Front.PNG)
