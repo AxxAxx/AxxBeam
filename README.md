@@ -3,8 +3,7 @@
 # AxxBeam Overview
 AxxBeam is a STM32 based high-power enduro headlamp designed with durability and thermal performance as the main priorities. It is built to survive harsh environments while delivering the most usable light possible.  
 The project started out of frustration with existing commercial solutions: high price, questionable design choices, and optimistic specifications. AxxBeam is my attempt to do it properly -- from PCB and firmware to mechanics and thermal design.  
-The hardware is built around the [STM32G431KBU6](https://www.st.com/en/microcontrollers-microprocessors/stm32g431kb.html) microcontroller, driving 8x [Cree XM-L2](https://www.cree-led.com/products/xlamp-leds-arrays/xlamp-xm-l2) LEDs through an [LT3741](https://www.analog.com/en/products/lt3741.html) LED driver. The light features a full CNC-machined aluminium body, a magnetic Hall-effect switch, active temperature regulation, and a built-in [RN4871](https://www.microchip.com/en-us/product/rn4871) Bluetooth module for wireless firmware updates and Android app control.  
-Design files are available under [/CAD](./CAD) and [/Manufacturing_3Dprint](./Manufacturing_3Dprint). A *bill of materials* (BOM) can be found under [/bom](./AxxBeam_hardware/bom).  
+The hardware is built around the [STM32G431KBU6](https://www.st.com/en/microcontrollers-microprocessors/stm32g431kb.html) microcontroller, driving 8x [Cree XM-L2](https://www.cree-led.com/products/xlamp-leds-arrays/xlamp-xm-l2) LEDs through an [LT3741](https://www.analog.com/en/products/lt3741.html) LED driver. The light features a full CNC-machined aluminium body, a magnetic Hall-effect switch, active temperature regulation, and a built-in [RN4871](https://www.microchip.com/en-us/product/rn4871) Bluetooth module for wireless firmware updates and Android app control.    
 ![coverphoto](./images/AxxBeam_ISO_cropped.jpg)
 
 # Table of Contents
