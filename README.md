@@ -213,8 +213,6 @@ Flashing or updating the firmware on the STM32 MCU can be done in two ways:
 3. Flash the firmware via USB DFU using STM32CubeProgrammer.
 
 ![AxxBeam_mud](./images/AxxBeam_in_mud.jpg)
-![AxxBeam_alpha](./images/AxxBeam_alpha.jpg)
-![AxxBeam_comparison](./images/AxxBeam_alpha_VS_LedX.jpg)
 
 # Disclaimer
 AxxBeam is an open source project and has absolutely no warranty, or guarantees on functionality or reliability! The author of this project accepts absolutely no liability for any harm or loss resulting from its use. That said, have fun. :)
