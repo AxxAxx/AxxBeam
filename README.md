@@ -104,7 +104,6 @@ AxxBeam is primarily optimized for **helmet mounting**, either as a single unit 
 
 ![AxxBeam_back](./images/AxxBeam_Back.jpg)
 ![AxxBeam_helmet_bracket](./images/AxxBeam_Helmet_Bracket.jpg)
-![AxxBeam_on_bike](./images/AxxBeam_on_FE350.jpg)
 
 # Firmware
 The firmware is written in C for the STM32G431KBU6 using STM32CubeIDE and the STM32 HAL library. It implements an IDLE/RUN state machine with smooth DAC-controlled power transitions, continuous temperature monitoring (TMP1075 via I2C) with proportional output reduction above 75 deg C, ADC-based battery voltage monitoring, Hall-effect button handling with debounce, and RN4871 Bluetooth communication for app control and OTA updates. All user settings are stored in internal flash.
