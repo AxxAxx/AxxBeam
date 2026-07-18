@@ -22,6 +22,7 @@
 #include "stm32g4xx_it.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "flash.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -72,6 +73,32 @@ extern UART_HandleTypeDef huart2;
 void NMI_Handler(void)
 {
   /* USER CODE BEGIN NonMaskableInt_IRQn 0 */
+
+  /* A flash double-bit ECC error raises an NMI on read. The realistic
+   * cause is a data-page write torn by power loss (connector bounce while
+   * saving settings or the health log). Hanging here would create a
+   * permanent watchdog boot loop, because the torn word is read again on
+   * every boot. All four user data pages are CRC-protected with default
+   * fallbacks, so erase them and reset: the firmware then recovers on its
+   * own. If the error is in program flash this does not help, but the
+   * device was unrecoverable in that case anyway. */
+  if (FLASH->ECCR & FLASH_ECCR_ECCD){
+    FLASH->ECCR |= FLASH_ECCR_ECCD; // clear the fault flag (write 1)
+
+    FLASH_EraseInitTypeDef erase = {0};
+    uint32_t page_error;
+    erase.TypeErase = FLASH_TYPEERASE_PAGES;
+    erase.Banks     = FLASH_BANK_1;
+    erase.Page      = GetPage(FLASH_USER_HEALTH_ADDR); // page 60
+    erase.NbPages   = 4;                               // pages 60-63
+
+    HAL_FLASH_Unlock();
+    __HAL_FLASH_CLEAR_FLAG(FLASH_FLAG_OPTVERR);
+    HAL_FLASHEx_Erase(&erase, &page_error);
+    HAL_FLASH_Lock();
+
+    NVIC_SystemReset();
+  }
 
   /* USER CODE END NonMaskableInt_IRQn 0 */
   /* USER CODE BEGIN NonMaskableInt_IRQn 1 */

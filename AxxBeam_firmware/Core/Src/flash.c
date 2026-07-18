@@ -11,13 +11,11 @@ uint32_t GetPage(uint32_t Addr)
 
 void Flash_Read_Data(uint32_t StartPageAddress, uint32_t *RxBuf, uint16_t numberofwords)
 {
-	while (1)
+	while (numberofwords--)
 	{
 		*RxBuf = *(__IO uint32_t *)StartPageAddress;
-		StartPageAddress += 8;//4
+		StartPageAddress += 8; // one 32-bit word is stored per 64-bit flash double word
 		RxBuf++;
-		if (!(numberofwords--))
-			break;
 	}
 }
 
@@ -34,7 +32,7 @@ uint32_t Flash_Write_Data (uint32_t StartPageAddress, uint32_t *Data, uint16_t n
 	   /* Erase the user Flash area*/
 
 	   uint32_t StartPage = GetPage(StartPageAddress);
-	  uint32_t EndPageAdress = StartPageAddress + numberofwords*4;
+	  uint32_t EndPageAdress = StartPageAddress + numberofwords*8 - 1; // one 32-bit word per 64-bit double word
 	  uint32_t EndPage = GetPage(EndPageAdress);
 
 		 /* Clear OPTVERR bit set on virgin samples */
@@ -43,11 +41,12 @@ uint32_t Flash_Write_Data (uint32_t StartPageAddress, uint32_t *Data, uint16_t n
 	   /* Fill EraseInit structure*/
 		EraseInitStruct.TypeErase   = FLASH_TYPEERASE_PAGES;
 		EraseInitStruct.Page        = StartPage;
-		EraseInitStruct.NbPages     = ((EndPage - StartPage)/FLASH_PAGE_SIZE) +1;
+		EraseInitStruct.NbPages     = (EndPage - StartPage) + 1;
 
 	   if (HAL_FLASHEx_Erase(&EraseInitStruct, &PageError) != HAL_OK)
 	   {
 	     /*Error occurred while page erase.*/
+		  HAL_FLASH_Lock();
 		  return HAL_FLASH_GetError();
 	   }
 
@@ -63,6 +62,7 @@ uint32_t Flash_Write_Data (uint32_t StartPageAddress, uint32_t *Data, uint16_t n
 	     else
 	     {
 	       /* Error occurred while writing data in Flash memory*/
+	    	 HAL_FLASH_Lock();
 	    	 return HAL_FLASH_GetError ();
 	     }
 	   }

@@ -9,7 +9,7 @@
 
 /* TypeDefs ------------------------------------------------------------------*/
 typedef struct{
-	float WindowLength;
+	uint32_t WindowLength;
 	float History[Max_WindowLength]; /*Array to store values of filter window*/
 	float Sum;	/* Sum of filter window's elements*/
 	uint32_t WindowPointer; /* Pointer to the first element of window*/

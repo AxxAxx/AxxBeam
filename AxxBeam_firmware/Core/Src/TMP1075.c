@@ -18,15 +18,15 @@ float TMP1075_Read_Temperature(I2C_HandleTypeDef *hi2c) {
     float temperature;  					// Variable to hold the calculated temperature
 
     // Send the temperature register address
-    if (HAL_I2C_Master_Transmit(hi2c, TMP1075_I2C_ADDRESS, (uint8_t*) &temp_reg_addr, 1, HAL_MAX_DELAY) != HAL_OK) {
+    if (HAL_I2C_Master_Transmit(hi2c, TMP1075_I2C_ADDRESS, (uint8_t*) &temp_reg_addr, 1, TMP1075_I2C_TIMEOUT_MS) != HAL_OK) {
         // Transmission error
-        return -1000.0f;  // Error value
+        return TMP1075_READ_ERROR;
     }
 
     // Receive 2 bytes of temperature data from the TMP1075
-    if (HAL_I2C_Master_Receive(hi2c, TMP1075_I2C_ADDRESS, temp_raw_data, 2, HAL_MAX_DELAY) != HAL_OK) {
+    if (HAL_I2C_Master_Receive(hi2c, TMP1075_I2C_ADDRESS, temp_raw_data, 2, TMP1075_I2C_TIMEOUT_MS) != HAL_OK) {
         // Reception error
-        return -1000.0f;  // Error value
+        return TMP1075_READ_ERROR;
     }
 
     // Combine the MSB and LSB into a 16-bit value
